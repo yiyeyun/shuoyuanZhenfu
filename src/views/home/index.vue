@@ -16,17 +16,25 @@
         <el-submenu index="1">
           <template slot="title">
             <i class="el-icon-goods" />
-            <span>模版管理</span>
+            <span>产业设置</span>
           </template>
-          <el-menu-item index="/model-manage">模版管理</el-menu-item>
+          <el-menu-item index="/model-manage">产业介绍</el-menu-item>
+          <el-menu-item index="/model-manage">旅游介绍</el-menu-item>
         </el-submenu>
         <el-submenu index="2">
           <template slot="title">
             <i class="el-icon-menu" />
-            <span>订单管理</span>
+            <span>账号设置</span>
           </template>
           <el-menu-item index="/order-manage">订单管理</el-menu-item>
         </el-submenu>
+          <el-submenu index="3">
+              <template slot="title">
+                  <i class="el-icon-menu" />
+                  <span>系统设置</span>
+              </template>
+              <el-menu-item index="/order-manage">系统设置</el-menu-item>
+          </el-submenu>
         <!--<el-submenu index="3">-->
           <!--<template slot="title">-->
             <!--<i class="el-icon-tickets" />-->
