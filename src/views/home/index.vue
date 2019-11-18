@@ -18,23 +18,29 @@
             <i class="el-icon-goods" />
             <span>产业设置</span>
           </template>
-          <el-menu-item index="/model-manage">产业介绍</el-menu-item>
-          <el-menu-item index="/model-manage">旅游介绍</el-menu-item>
+          <el-menu-item index="/industry">产业介绍</el-menu-item>
+          <el-menu-item index="/tourism">旅游介绍</el-menu-item>
         </el-submenu>
         <el-submenu index="2">
           <template slot="title">
             <i class="el-icon-menu" />
             <span>账号设置</span>
           </template>
-          <el-menu-item index="/order-manage">订单管理</el-menu-item>
+          <el-menu-item index="/account">账号设置</el-menu-item>
         </el-submenu>
-          <el-submenu index="3">
-              <template slot="title">
-                  <i class="el-icon-menu" />
-                  <span>系统设置</span>
-              </template>
-              <el-menu-item index="/order-manage">系统设置</el-menu-item>
-          </el-submenu>
+        <!--<el-menu-item index="/account">-->
+          <!--<template slot="title">-->
+            <!--<i class="el-icon-menu" />-->
+            <!--<span>账号设置</span>-->
+          <!--</template>-->
+        <!--</el-menu-item>-->
+          <!--<el-submenu index="3">-->
+              <!--<template slot="title">-->
+                  <!--<i class="el-icon-menu" />-->
+                  <!--<span>系统设置</span>-->
+              <!--</template>-->
+              <!--<el-menu-item index="/order-manage">系统设置</el-menu-item>-->
+          <!--</el-submenu>-->
         <!--<el-submenu index="3">-->
           <!--<template slot="title">-->
             <!--<i class="el-icon-tickets" />-->
@@ -54,7 +60,7 @@
 
     <div class="flex-1 flex flex-column over-hidden">
       <top class="bottom-line" :is-expend="isExpend" @onchange="isExpend = !isExpend" />
-      <div class="flex-1">
+      <div class="flex-1 over-auto">
         <router-view />
       </div>
     </div>
@@ -110,4 +116,7 @@ export default {
 /deep/ .el-menu{
   border-right: 1px solid @main-color;
 }
+  .over-auto{
+    overflow: auto;
+  }
 </style>

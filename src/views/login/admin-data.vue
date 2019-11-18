@@ -16,6 +16,7 @@
           <idol-qiniu-upload
             list-type="picture-card"
             :limit="1"
+            :class="logo.length ? 'has-logo': ''"
             :file-list="logo"
             @upload-success="logoPicUpload(arguments)"
             @remove="logoPicRemove(arguments)"
@@ -104,7 +105,7 @@ export default {
     async submit() {
       console.log(this.form, this.address, this.detailAddress)
       this.form.address = `${this.address.province}${this.address.city}${this.address.area}${this.detailAddress}`
-      this.governmentLogo = 'fsfds'
+      this.governmentLogo = this.logo[0]
       try {
         await validateNotNull(this.form.address, '地址未填写完整')
         await validateNotNull(this.form.governmentName, '名称不能为空')
@@ -119,10 +120,12 @@ export default {
       }
     },
     logoPicUpload(e) {
+      console.log('2222', e)
+
       this.logo.push(e[0])
     },
     logoPicRemove(e) {
-      this.logo = this.removePicHandle(e[0], this.form.image)
+      this.logo = []
     }
   }
 }
@@ -141,4 +144,7 @@ export default {
         padding: 40px;
         width: 700px;
     }
+  /deep/ .has-logo .el-upload--picture-card{
+    display: none;
+  }
 </style>

@@ -17,8 +17,16 @@ export default new Router({
       component: () => import('../views/home'),
       children: [
         {
-          path: '',
-          component: () => import('@/views/home/default')
+          path: '/industry',
+          component: () => import('@/views/industry-set/industry')
+        },
+        {
+          path: '/tourism',
+          component: () => import('@/views/industry-set/tourism')
+        },
+        {
+          path: '/account',
+          component: () => import('@/views/account-set')
         }
       ]
     }
