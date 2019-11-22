@@ -1,5 +1,6 @@
 const path = require('path')
 module.exports = {
+  publicPath: '/zhengfu',
   devServer: {
     proxy: {
       '/api': {
