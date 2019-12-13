@@ -16,17 +16,24 @@
         <el-submenu index="1">
           <template slot="title">
             <i class="el-icon-goods" />
-            <span>产业设置</span>
+            <span>客户管理</span>
           </template>
-          <el-menu-item index="/industry">产业介绍</el-menu-item>
-          <el-menu-item index="/tourism">旅游介绍</el-menu-item>
+          <el-menu-item index="/customer-list">客户列表</el-menu-item>
+          <!--<el-menu-item index="/tourism">旅游介绍</el-menu-item>-->
         </el-submenu>
         <el-submenu index="2">
           <template slot="title">
             <i class="el-icon-menu" />
-            <span>账号设置</span>
+            <span>码包管理</span>
           </template>
-          <el-menu-item index="/account">账号设置</el-menu-item>
+          <el-menu-item index="/code-list">母码列表</el-menu-item>
+        </el-submenu>
+        <el-submenu index="3">
+          <template slot="title">
+            <i class="el-icon-tickets" />
+            <span>系统设置</span>
+          </template>
+          <el-menu-item index="/account">客户列表</el-menu-item>
         </el-submenu>
         <!--<el-menu-item index="/account">-->
           <!--<template slot="title">-->

@@ -17,6 +17,14 @@ export default new Router({
       component: () => import('../views/home'),
       children: [
         {
+          path: '/customer-list',
+          component: () => import('@/views/customer-manage/customer-list')
+        },
+        {
+          path: '/code-list',
+          component: () => import('@/views/code-manage/code-list')
+        },
+        {
           path: '/industry',
           component: () => import('@/views/industry-set/industry')
         },

@@ -226,7 +226,12 @@
 .font-size-36{
     font-size: 36px;
 }
-
+.text-white{
+    color: #fff;
+}
+.text-underline-none{
+    text-decoration: none;
+}
 .text-center{
     text-align: center;
 }

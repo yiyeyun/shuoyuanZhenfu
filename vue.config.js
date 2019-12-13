@@ -1,6 +1,6 @@
 const path = require('path')
 module.exports = {
-  publicPath: '/zhengfu',
+  // publicPath: '/zhengfu',
   devServer: {
     proxy: {
       '/api': {
@@ -10,6 +10,8 @@ module.exports = {
           '^/api': ''
         }
       }
+      // "password": "111111",
+      // "username": "13968137472"
     }
   },
   lintOnSave: false,
