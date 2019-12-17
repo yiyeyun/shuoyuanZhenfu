@@ -32,3 +32,10 @@ export function accountEnable(data) {
     data
   })
 }
+export function createPackage(data) {
+  return request({
+    url: `manager/qrCode/createdPackage`,
+    method: 'post',
+    data
+  })
+}

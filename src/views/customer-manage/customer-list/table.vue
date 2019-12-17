@@ -4,11 +4,11 @@
       :data="list"
       style="width: 100%"
     >
-      <el-table-column
-        prop="accountId"
-        align="center"
-        label="账户ID"
-      />
+      <!--<el-table-column-->
+      <!--prop="accountId"-->
+      <!--align="center"-->
+      <!--label="账户ID"-->
+      <!--/>-->
       <el-table-column
         prop="gruopName"
         align="center"
@@ -93,12 +93,43 @@
           >禁用</el-button>
         </template>
       </el-table-column>
+      <el-table-column
+        align="center"
+        label="操作"
+      >
+        <template slot-scope="scope">
+          <el-button
+            type="warning"
+            size="mini"
+            @click="showPrint(scope.row)"
+          >打印</el-button>
+        </template>
+      </el-table-column>
     </el-table>
+    <el-dialog :visible.sync="printDialog" title="打印" width="400px">
+      <div class="flex align-center">
+        <div class="label-80 mr10">
+          生码数量
+        </div>
+        <el-input v-model="printParams.num" />
+      </div>
+      <div class="flex align-center mt10">
+        <div class="label-80 mr10">
+          包/数量
+        </div>
+        <el-input v-model="printParams.packageNum" />
+      </div>
+      <div class="flex align-center mt10">
+        <div class="label-80 mr10" />
+        <el-button type="warning" size="mini" @click="print">打印</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
 <script>
-import { accountEnable } from '../../../api/account'
+import { accountEnable, createPackage } from '../../../api/account'
+import { validateIntege } from '../../../validate'
 
 export default {
   name: 'Table',
@@ -106,6 +137,16 @@ export default {
     list: {
       type: Array,
       value: []
+    }
+  },
+  data() {
+    return {
+      printParams: {
+        num: '',
+        packageNum: ''
+      },
+      printData: {},
+      printDialog: false
     }
   },
   methods: {
@@ -122,6 +163,28 @@ export default {
     },
     view(data) {
       console.log(data)
+    },
+    showPrint(data) {
+      this.printData = data
+      this.printDialog = true
+      this.printParams = {
+        num: '',
+        packageNum: ''
+      }
+    },
+    async print() {
+      try {
+        await validateIntege(this.printParams.num, '生产数量格式有误')
+        await validateIntege(this.printParams.packageNum, '包数量格式有误')
+        await createPackage({
+          ...this.printParams,
+          groupId: this.printData.accountId
+        })
+        this.$message.success('打印成功')
+        this.printDialog = false
+      } catch (e) {
+        console.log(e)
+      }
     }
   }
 }

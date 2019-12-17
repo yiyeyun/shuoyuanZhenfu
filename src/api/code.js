@@ -26,3 +26,11 @@ export function getPackageDetail(id) {
     method: 'post'
   })
 }
+
+export function getPackageSubList(data) {
+  return request({
+    url: `manager/qrCode/packageSubList`,
+    method: 'post',
+    data
+  })
+}

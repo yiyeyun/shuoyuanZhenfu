@@ -35,6 +35,9 @@ export function validateNotNull(value, type) {
 }
 export function validateIntege(value, message) {
   return new Promise((resolve, reject) => {
+    if (!value && value !== 0) {
+      reject()
+    }
     if (!/^[1-9]+[0-9]*$/.test(+value)) {
       warningMessage(message)
       reject()
