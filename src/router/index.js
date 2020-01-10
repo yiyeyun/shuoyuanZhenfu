@@ -21,6 +21,10 @@ export default new Router({
           component: () => import('@/views/customer-manage/customer-list')
         },
         {
+          path: '/setting',
+          component: () => import('@/views/setting')
+        },
+        {
           path: '/code-list',
           component: () => import('@/views/code-manage/code-list')
         },

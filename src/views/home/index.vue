@@ -28,13 +28,13 @@
           </template>
           <el-menu-item index="/code-list">母码列表</el-menu-item>
         </el-submenu>
-        <el-submenu index="3">
+        <el-menu-item index="/setting">
           <template slot="title">
             <i class="el-icon-tickets" />
             <span>系统设置</span>
           </template>
-          <el-menu-item index="/account">客户列表</el-menu-item>
-        </el-submenu>
+          <!--<el-menu-item index="/account">客户列表</el-menu-item>-->
+        </el-menu-item>
         <!--<el-menu-item index="/account">-->
           <!--<template slot="title">-->
             <!--<i class="el-icon-menu" />-->

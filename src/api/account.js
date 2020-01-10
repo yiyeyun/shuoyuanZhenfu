@@ -11,7 +11,7 @@ export function createAccount(data) {
 
 export function createGroupAccount(data) {
   return request({
-    url: `manager/account/createdGroupAccount`,
+    url: `account/createdGroupAccount`,
     method: 'post',
     data
   })
@@ -19,7 +19,7 @@ export function createGroupAccount(data) {
 
 export function getAccountList(data) {
   return request({
-    url: `manager/account/groupAccountList`,
+    url: `account/groupAccountList`,
     method: 'post',
     data
   })
@@ -27,14 +27,14 @@ export function getAccountList(data) {
 
 export function accountEnable(data) {
   return request({
-    url: `manager/account/accountEnable`,
+    url: `account/accountEnable`,
     method: 'post',
     data
   })
 }
 export function createPackage(data) {
   return request({
-    url: `manager/qrCode/createdPackage`,
+    url: `qrCode/createdPackage`,
     method: 'post',
     data
   })

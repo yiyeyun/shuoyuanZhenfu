@@ -93,7 +93,7 @@ export default {
   },
   methods: {
     print(data) {
-      window.open(`api/manager/qrCode/downTxt/${data.packageId}`)
+      window.open(`https://www.bjd33.cn/manager/qrCode/downTxt/${data.packageId}`)
     },
     view(data) {
       this.$emit('view-detail', data)

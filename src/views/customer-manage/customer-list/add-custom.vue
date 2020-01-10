@@ -50,7 +50,7 @@ export default {
       try {
         await validateNotNull(this.form.groupName, '组织名称不能为空')
         await validateNotNull(this.form.contactPerson, '联系人不能为空')
-        await validatePhone(this.form.tel,)
+        // await validatePhone(this.form.tel,)
         const result = await createGroupAccount(this.form)
         this.$message.success('添加成功')
         this.$emit('close')

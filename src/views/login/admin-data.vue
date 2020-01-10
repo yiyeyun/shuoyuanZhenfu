@@ -120,8 +120,6 @@ export default {
       }
     },
     logoPicUpload(e) {
-      console.log('2222', e)
-
       this.logo.push(e[0])
     },
     logoPicRemove(e) {

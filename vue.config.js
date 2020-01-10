@@ -1,13 +1,13 @@
 const path = require('path')
 module.exports = {
-  publicPath: '/zhengfu',
+  publicPath: '/manager',
   devServer: {
     proxy: {
-      '/api': {
+      '/manager': {
         target: `https://www.bjd33.cn`,
         changeOrigin: true,
         pathRewrite: {
-          '^/api': ''
+          '^/manager': '/manager'
         }
       }
       // "password": "111111",
