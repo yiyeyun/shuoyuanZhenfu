@@ -58,13 +58,15 @@
           <el-button
             type="primary"
             size="mini"
+            @click="view(scope.row.accountId)"
           >
-            <router-link
-              class="text-white text-underline-none"
-              target="_blank"
-              :to="{path:'/code-list',query:{ id:scope.row.accountId}}"
-            >查看
-            </router-link>
+            <!--<router-link-->
+            <!--class="text-white text-underline-none"-->
+            <!--target="_blank"-->
+            <!--:to="{path:'/code-list',query:{ id:scope.row.accountId}}"-->
+            <!--&gt;-->
+            <!--</router-link>-->
+            查看
           </el-button>
         </template>
       </el-table-column>
@@ -106,20 +108,29 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-dialog :visible.sync="printDialog" title="打印" width="400px">
+    <el-dialog
+      :visible.sync="printDialog"
+      :close-on-click-modal="false"
+      title="打印"
+      width="400px"
+    >
       <div class="flex align-center">
         <div class="label-80 mr10">
           生码数量
         </div>
         <el-input v-model="printParams.num" />
       </div>
-      <div class="flex align-center mt10">
+      <div class="flex align-center mt20">
+        <el-radio v-model="type" label="1">按照包区分</el-radio>
+        <el-radio v-model="type" label="2">自由分配</el-radio>
+      </div>
+      <div v-show="type === '1'" class="flex align-center mt20">
         <div class="label-80 mr10">
           包/数量
         </div>
         <el-input v-model="printParams.packageNum" />
       </div>
-      <div class="flex align-center mt10">
+      <div class="flex align-center mt20">
         <div class="label-80 mr10" />
         <el-button type="warning" size="mini" @click="print">打印</el-button>
       </div>
@@ -145,6 +156,7 @@ export default {
         num: '',
         packageNum: ''
       },
+      type: '1',
       printData: {},
       printDialog: false
     }
@@ -161,8 +173,11 @@ export default {
         console.log(e)
       }
     },
-    view(data) {
-      console.log(data)
+    view(id) {
+      this.$router.push({
+        path: '/code-list',
+        query: { id }
+      })
     },
     showPrint(data) {
       this.printData = data
@@ -174,8 +189,11 @@ export default {
     },
     async print() {
       try {
-        await validateIntege(this.printParams.num, '生产数量格式有误')
-        await validateIntege(this.printParams.packageNum, '包数量格式有误')
+        if (this.type === '1') {
+          this.printParams.packageNum = 1
+        }
+        await validateIntege(+this.printParams.num, '生产数量格式有误')
+        await validateIntege(+this.printParams.packageNum, '包数量格式有误')
         await createPackage({
           ...this.printParams,
           groupId: this.printData.accountId

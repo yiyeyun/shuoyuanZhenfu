@@ -17,6 +17,7 @@
     <el-dialog
       :title="industryData.id ? '编辑产业': '新增产业'"
       width="600px"
+      :close-on-click-modal="false"
       :visible.sync="dialog"
     >
       <div class="flex align-center">
@@ -37,7 +38,8 @@
       </div>
       <div class="flex mt20">
         <div class="name" />
-        <el-button type="warning" @click="submit">提交</el-button>
+        <el-button type="warning" class="mr10" @click="submit">提交</el-button>
+        <el-button type="danger" @click="dialog = false">取消</el-button>
       </div>
     </el-dialog>
   </div>

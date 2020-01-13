@@ -48,8 +48,8 @@ export default {
   name: 'Index',
   data() {
     return {
-      username: '13968137472',
-      password: '111111',
+      username: '', // 13968137472
+      password: '', // 111111
       code: ''
     }
   },

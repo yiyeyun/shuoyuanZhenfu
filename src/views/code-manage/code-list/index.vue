@@ -15,7 +15,7 @@
         />
       </el-select>
     </div>
-    <idol-table :list="list" @view-detail="view"/>
+    <idol-table :list="list" @view-detail="view" />
     <el-pagination
       background
       class="mt10"
@@ -24,8 +24,13 @@
       :total="total"
       @current-change="pageChange"
     />
-    <el-dialog title="母码详情" :visible.sync="detailDialog" width="80%">
-      <idol-detail :detail-data="detailData"/>
+    <el-dialog
+      title="母码详情"
+      :visible.sync="detailDialog"
+      :close-on-click-modal="false"
+      width="80%"
+    >
+      <idol-detail :detail-data="detailData" />
     </el-dialog>
   </div>
 </template>

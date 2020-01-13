@@ -22,6 +22,23 @@ export function validatePhone(value) {
   })
 }
 
+// 验证手机号座机
+export function validateTel(value) {
+  return new Promise((resolve, reject) => {
+    if (!(value && value.trim())) {
+      warningMessage('联系方式不能为空')
+      reject()
+    }
+    const reg = /^((\+?86)|(\(\+86\)))?(13[0123456789][0-9]{8}|15[0123456789][0-9]{8}|17[0123456789][0-9]{8}|18[0123456789][0-9]{8}|147[0-9]{8}|1349[0-9]{7})$/
+    if (!reg.test(value.trim())) {
+      warningMessage('联系方式格式有误')
+      reject()
+    } else {
+      resolve()
+    }
+  })
+}
+
 // 不为空验证
 export function validateNotNull(value, type) {
   return new Promise((resolve, reject) => {

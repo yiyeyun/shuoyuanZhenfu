@@ -7,7 +7,7 @@
         @click="add"
       >新增账户</el-button>
     </div>
-    <el-dialog :visible.sync="dialog" title="新增账户" width="600px">
+    <el-dialog :visible.sync="dialog" title="新增账户" :close-on-click-modal="false" width="600px">
       <el-form :model="form" label-width="100px">
         <el-form-item label="公司名称">
           <el-input v-model="form.companyName" />

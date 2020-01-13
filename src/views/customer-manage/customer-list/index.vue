@@ -7,9 +7,14 @@
         @click="customDialog = true"
       >新增</el-button>
     </div>
-    <idol-table @enable-edit="enable" :list="list"></idol-table>
-    <el-dialog title="新增客户" :visible.sync="customDialog" width="500px">
-      <add-custom @close="addSuccess" />
+    <idol-table :list="list" @enable-edit="enable" />
+    <el-dialog
+      title="新增客户"
+      :visible.sync="customDialog"
+      :close-on-click-modal="false"
+      width="500px"
+    >
+      <add-custom :dialog="customDialog" @close="addSuccess" />
     </el-dialog>
     <el-pagination
       background

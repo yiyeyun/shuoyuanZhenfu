@@ -30,7 +30,7 @@
 
 <script>
 import { createGroupAccount } from '../../../api/account'
-import { validatePhone, validateNotNull } from '../../../validate'
+import { validatePhone, validateTel, validateNotNull } from '../../../validate'
 
 export default {
   name: 'AddCustom',
@@ -44,13 +44,26 @@ export default {
       }
     }
   },
+  props: {
+    dialog: Boolean
+  },
+  watch: {
+    dialog() {
+      this.form = {
+        groupName: '',
+        groupType: '1',
+        contactPerson: '',
+        tel: ''
+      }
+    }
+  },
   methods: {
     async submit() {
       console.log(this.form)
       try {
         await validateNotNull(this.form.groupName, '组织名称不能为空')
         await validateNotNull(this.form.contactPerson, '联系人不能为空')
-        // await validatePhone(this.form.tel,)
+        await validateTel(this.form.tel)
         const result = await createGroupAccount(this.form)
         this.$message.success('添加成功')
         this.$emit('close')
