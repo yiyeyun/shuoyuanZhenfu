@@ -189,11 +189,11 @@ export default {
     },
     async print() {
       try {
-        if (this.type === '1') {
-          this.printParams.packageNum = 1
+        if (this.type === '2') {
+          this.printParams.packageNum = -1
         }
         await validateIntege(+this.printParams.num, '生产数量格式有误')
-        await validateIntege(+this.printParams.packageNum, '包数量格式有误')
+        // await validateIntege(+this.printParams.packageNum, '包数量格式有误')
         await createPackage({
           ...this.printParams,
           groupId: this.printData.accountId

@@ -55,6 +55,9 @@ export function validateIntege(value, message) {
     if (!value && value !== 0) {
       reject()
     }
+    if (+value === -1) {
+      resolve()
+    }
     if (!/^[1-9]+[0-9]*$/.test(+value)) {
       warningMessage(message)
       reject()
